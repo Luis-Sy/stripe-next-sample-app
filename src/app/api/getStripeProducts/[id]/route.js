@@ -1,11 +1,14 @@
-import { stripe } from "@/lib/stripe";
+import Stripe from "stripe";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 10;
 
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+
 export async function GET(req, {params}) { 
   try {
-    const { id } = params;
+    const { id } = await params;
     const product = await stripe.products.retrieve(id);
     
     // Fetch prices for the product

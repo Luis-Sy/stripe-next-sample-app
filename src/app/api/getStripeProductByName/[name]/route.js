@@ -1,11 +1,14 @@
-import { stripe } from "@/lib/stripe";
+import Stripe from "stripe";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 10;
 
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+
 export async function GET(req, {params}) { 
   try {
-    const { name } = params;
+    const { name } = await params;
     const decodedName = decodeURIComponent(name);
     
     // Fetch all products and filter by name

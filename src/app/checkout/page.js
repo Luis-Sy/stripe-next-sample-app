@@ -9,22 +9,28 @@ import {
 } from "@stripe/react-stripe-js";
 
 
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string);
-
 export default function Page() {
   const [clientSecret, setClientSecret] = useState("");
+  const [stripePromise, setStripePromise] = useState(null);
 
   useEffect(() => {
 	  // when page loads, call the checkout api to initiate purchase
     // console.log(JSON.parse(localStorage.getItem("cart")));
+
+    // Dynamically load Stripe with env var
+    const load = async () => {
+      const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+      setStripePromise(stripe);
+    };
+    load();
+
     fetch("/api/stripeCheckout", {
       method: "POST",
       headers:{
         "Content-Type": "application/json",
       },
       // retrieve items in cart
-      body: JSON.stringify(JSON.parse(localStorage.getItem("cart") as string))
+      body: JSON.stringify(JSON.parse(localStorage.getItem("cart") || "[]"))
     })
       .then((res) => res.json())
       .then((data) => {
@@ -38,7 +44,7 @@ export default function Page() {
   return (
     <div id="checkout">
 		<h1>Product Purchase Page</h1>
-		<Link href="/productList">See Products</Link>
+		<Link href="/">See Products</Link>
       {clientSecret ? (
         <EmbeddedCheckoutProvider stripe={stripePromise} options={{ clientSecret }}>
           <EmbeddedCheckout />

@@ -1,12 +1,15 @@
-import { stripe } from "@/lib/stripe";
+import Stripe from "stripe";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 10;
 
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+
 export async function GET(req, {params}) { 
   try {
     // Fetch all active products starting before the queried one, functions as getting the previous 100 products before the queried one
-    const { id } = params;
+    const { id } = await params;
     const products = await stripe.products.list({ active: true, limit: 100, ending_before: id });
 
     // Fetch prices for each product

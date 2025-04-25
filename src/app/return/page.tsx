@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function SuccessPage() {
   const [sessionId, setSessionId] = useState<string | null>(null);
@@ -22,6 +23,7 @@ export default function SuccessPage() {
   return (
     <div>
       <h1>Purchase Successful!</h1>
+      <Link href="/">See Products</Link>
       <p>Session ID: {sessionId || "Not found"}</p>
     </div>
   );
