@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/addToCartButton.js", "src/app/productView/[id]/page.js", "src/app/page.js", "src/app/stripeCheckout/page.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/components/addToCartButton.js", "src/app/productView/[id]/page.js", "src/app/page.js", "src/app/stripeCheckout/page.js", "src/app/invoice/page.js"],
   "exclude": ["node_modules"]
 }

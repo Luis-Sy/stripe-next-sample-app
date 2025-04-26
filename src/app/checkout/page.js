@@ -43,7 +43,7 @@ export default function Page() {
 
   return (
     <div id="checkout">
-		<h1>Product Purchase Page</h1>
+		<h1>Checkout</h1>
 		<Link href="/">See Products</Link>
       {clientSecret ? (
         <EmbeddedCheckoutProvider stripe={stripePromise} options={{ clientSecret }}>
