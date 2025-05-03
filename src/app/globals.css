@@ -41,6 +41,16 @@ a {
   }
 }
 
+/* 
+
+TODO
+-separate css into different files
+-create page navigation for product list page
+-create proper css for site logo
+
+
+*/
+
 /* Top Navigation bar */
 
 #title {
@@ -67,6 +77,7 @@ a {
   gap: 1em;
   width: 100%;
   background-color: rgb(30, 30, 30);
+  margin-bottom: 2em;
   & > h1 {
     margin: 10px;
   }
@@ -150,7 +161,14 @@ h1 {
 
 /* Product Detail Page*/
 
-
+#productView {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  margin: 3em;
+}
 
 /* Invoice Page */
 

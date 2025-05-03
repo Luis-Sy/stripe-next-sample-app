@@ -1,7 +1,5 @@
 "use client";
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import Navbar from "../components/navbar";
 
 export default function InvoicePage() {
     
@@ -46,7 +44,6 @@ export default function InvoicePage() {
 
     return (
         <div>
-        <Navbar />
         <h1>Send an Invoice</h1>
         <div id="invoiceForm">
             <h2>Enter your credentials and amount below</h2>

@@ -3,7 +3,16 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Navbar from "./components/navbar"; // Importing the Navbar component
+
+/**
+ * TODO
+ * 
+ * -add page navigation component at bottom of page
+ * -add loading animation
+ * -create and move route to productList page
+ * 
+ * 
+ */
 
 export default function ProductsList() {
   const [products, setProducts] = useState([]);
@@ -24,9 +33,6 @@ export default function ProductsList() {
 
   return (
     <div>
-
-      <Navbar /> 
-
       <h1>Product List</h1>
       
       {/* Display fetched products in a grid format */}

@@ -5,7 +5,6 @@ export const dynamic = "force-dynamic";
 import AddToCartButton from "../../components/addToCartButton";
 import Image from 'next/image'
 
-
 export default async function Page({ params }) {
   const { id } = await params;
   // fetch specified product and display on page
@@ -23,13 +22,15 @@ export default async function Page({ params }) {
   }
 	
   return (
-  <div>
-    <h1>{product?.name ?? "Unknown Product"}</h1>
-    <p>{product?.description ?? "No description available."}</p>
-    <Image src={product.images[0] } alt={product?.name} width={150} height={150} />
-    <p>Price: ${product.prices[0].unit_amount / 100}</p>
-    <p>Price ID: {product?.prices?.[0]?.id ?? "N/A"}</p>
-    <AddToCartButton price={product.default_price} />
-  </div>
+    <>
+    <div id="productView">
+      <Image src={product.images[0] } alt={product?.name} width={500} height={500} style={{objectFit: "cover", fill: true}}/>
+      <h1>{product?.name ?? "Unknown Product"}</h1>
+      <p>{product?.description ?? "No description available."}</p>
+      
+      <p>Price: ${product.prices[0].unit_amount / 100}</p>
+      <AddToCartButton price={product.default_price} />
+    </div>
+  </>
 );
 }

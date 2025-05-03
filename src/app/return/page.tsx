@@ -22,7 +22,6 @@ export default function SuccessPage() {
 
   return (
     <div>
-      <Navbar />
       <h1>Purchase Successful!</h1>
       <p>Session ID: {sessionId || "Not found"}</p>
     </div>
