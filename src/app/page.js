@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Navbar from "./components/navbar"; // Importing the Navbar component
 
 export default function ProductsList() {
   const [products, setProducts] = useState([]);
@@ -23,19 +24,10 @@ export default function ProductsList() {
 
   return (
     <div>
+
+      <Navbar /> 
+
       <h1>Product List</h1>
-      <div id="topNavigation">
-          {!localStorage.getItem("cart") || localStorage.getItem("cart").length < 1 ? (
-              <></> /* don't allow user to access checkout with an empty cart */
-          ) : (
-            <Link href="/checkout">
-                <h2>Checkout</h2>
-            </Link>
-          )}
-            <Link href="/invoice">
-                <h2>Send Invoice</h2>
-            </Link>
-      </div>
       
       {/* Display fetched products in a grid format */}
       {products ? (
@@ -46,10 +38,10 @@ export default function ProductsList() {
                 {product.images.length > 0 && ( 
                   /* The first image of the product will be displayed and act as a link to it's detailed view page */
                   <Link href={`/productView/${product.id}`}>
-                    <Image src={product.images[0]} alt={product.name} width={300} height={300}/>
+                    <Image src={product.images[0]} alt={product.name} width={300} height={300} style={{objectFit: "cover", fill: true}}/>
                   </Link>
                 )}
-                <h2 id="priceDisplay">${product.prices[0]?.unit_amount / 100}</h2>
+                <h2 id="priceDisplay">${product.prices[0]?.unit_amount / 100} {product.prices[0].currency}</h2>
                 {/* The entries below can be freely changed to any metadata you may have on your own stripe products */}
                 <h3>{product.metadata.Collection}'s Collection</h3>
                 <h3>{product.metadata.Category}</h3>

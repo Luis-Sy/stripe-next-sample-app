@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
+import Navbar from "../components/navbar";
 import Link from 'next/link';
 import {
   EmbeddedCheckoutProvider,
@@ -42,9 +43,10 @@ export default function Page() {
   }, []);
 
   return (
+    <>
+    <Navbar />
     <div id="checkout">
 		<h1>Checkout</h1>
-		<Link href="/">See Products</Link>
       {clientSecret ? (
         <EmbeddedCheckoutProvider stripe={stripePromise} options={{ clientSecret }}>
           <EmbeddedCheckout />
@@ -53,5 +55,6 @@ export default function Page() {
         <p>Loading checkout...</p>
       )}
     </div>
+    </>
   );
 }

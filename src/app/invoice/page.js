@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Navbar from "../components/navbar";
 
 export default function InvoicePage() {
     
@@ -45,19 +46,8 @@ export default function InvoicePage() {
 
     return (
         <div>
+        <Navbar />
         <h1>Send an Invoice</h1>
-        <div id="topNavigation">
-            {!localStorage.getItem("cart") || localStorage.getItem("cart").length < 1 ? (
-            <></> /* don't allow user to access checkout with an empty cart */
-            ) : (
-            <Link href="/checkout">
-                <h2>Checkout</h2>
-            </Link>
-            )}
-            <Link href="/">
-            <h2>Product List</h2>
-            </Link>
-        </div>
         <div id="invoiceForm">
             <h2>Enter your credentials and amount below</h2>
             <form onSubmit={sendInvoice}>

@@ -9,7 +9,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export async function GET() { 
   try {
     // Fetch all active products
-    const products = await stripe.products.list({ active: true, limit: 100 });
+    const products = await stripe.products.list({ active: true, limit: 10 });
 
     // Fetch prices for each product
     const productsWithPrices = await Promise.all(

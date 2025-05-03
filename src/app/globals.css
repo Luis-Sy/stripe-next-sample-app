@@ -41,28 +41,67 @@ a {
   }
 }
 
+/* Top Navigation bar */
+
+#title {
+  font-size: 3em;
+  text-align: left;
+}
+
+#titleLogoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: baseline;
+  justify-items: left;
+  & > * {
+    margin: 10px;
+  };
+}
+
+#topNavigation {
+  display: flex;
+  justify-content: left;
+  justify-items: center;
+  align-items: baseline;
+  gap: 1em;
+  width: 100%;
+  background-color: rgb(30, 30, 30);
+  & > h1 {
+    margin: 10px;
+  }
+  & > h2 {
+    text-align: center;
+  }
+  & > * > a:hover {
+      cursor: pointer;
+      text-decoration: underline;
+  }
+}
+
+#navLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  gap: 1em;
+  margin: 10px;
+}
+
+@media (max-width: 768px) {
+  #topNavigation {
+    flex-direction: column;
+  }
+  #navLinks {
+    margin-bottom: 20px;
+  }
+}
+
 /* Product List Page */
 
 h1 {
   text-align: center;
   margin: 1em;
-}
-
-#topNavigation {
-  display: flex;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  gap: 1em;
-  width: 100%;
-  & > h2 {
-    text-align: center;
-    padding: 1em;
-  }
-  & > a:hover {
-      cursor: pointer;
-      text-decoration: underline;
-  }
 }
 
 #productDisplayList {
@@ -82,12 +121,16 @@ h1 {
   justify-content: center;
   align-items: center;
   justify-items: center;
+  max-width: 400px;
+  width: auto;
   height: auto;
   margin: 3em;
   & > a {
+    transition: all 0.3s;
     border-style: solid;
+    border-radius: 5px;
     border-width: 5px;
-    border-color: black;
+    border-color: rgba(0, 0, 0, 0);
     margin-bottom: 1em;
     &:hover {
       border-color: white
@@ -106,6 +149,8 @@ h1 {
 }
 
 /* Product Detail Page*/
+
+
 
 /* Invoice Page */
 

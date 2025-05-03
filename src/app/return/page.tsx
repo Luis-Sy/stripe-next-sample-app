@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import Navbar from "../components/navbar";
 
 export default function SuccessPage() {
   const [sessionId, setSessionId] = useState<string | null>(null);
@@ -13,7 +13,7 @@ export default function SuccessPage() {
 		// get the returned session id from the checkout sessions api call
 		setSessionId(sessionStorage.getItem("clientSecret"));
 	}
-  localStorage.setItem("cart", "[]");
+  localStorage.removeItem("cart"); // clear cart from local storage
   }, []);
 
   if (!isMounted) {
@@ -22,8 +22,8 @@ export default function SuccessPage() {
 
   return (
     <div>
+      <Navbar />
       <h1>Purchase Successful!</h1>
-      <Link href="/">See Products</Link>
       <p>Session ID: {sessionId || "Not found"}</p>
     </div>
   );
