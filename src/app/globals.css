@@ -100,15 +100,6 @@ TODO
   margin: 10px;
 }
 
-@media (max-width: 768px) {
-  #topNavigation {
-    flex-direction: column;
-  }
-  #navLinks {
-    margin-bottom: 20px;
-  }
-}
-
 /* Footer */
 
 #footer {
@@ -122,6 +113,34 @@ TODO
   padding-bottom: 1em;
   width: 100%;
   background-color: rgb(30, 30, 30);
+}
+
+/* Mobile Layout */
+
+@media (max-width: 768px) {
+  #topNavigation {
+    flex-direction: column;
+  }
+  #navLinks {
+    margin-bottom: 20px;
+  }
+  #footer {
+    flex-direction: row;
+    font-size: 12px;
+  }
+}
+
+
+/* Home Page */
+
+#home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+  margin: 3em;
 }
 
 /* Product List Page */
@@ -140,6 +159,8 @@ h1 {
   flex-wrap: wrap;
   height: auto;
   margin: 2em;
+  margin-bottom: 5em;
+  height: 100%;
 }
 
 #productDisplay {
@@ -184,6 +205,7 @@ h1 {
   align-items: center;
   justify-items: center;
   margin: 3em;
+  margin-bottom: 7em;
 }
 
 /* Invoice Page */
