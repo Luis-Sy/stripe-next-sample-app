@@ -8,19 +8,19 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export async function GET() { 
   try {
-    // Fetch all active products
-    const products = await stripe.products.list({ active: true, limit: 10 });
-
-    // Fetch prices for each product
-    const productsWithPrices = await Promise.all(
-      products.data.map(async (product) => {
+    // Fetch all active products and attach prices to each one
+    let productsWithPrices = [];
+    const products = await stripe.products.list({ active: true, limit: 10 }).autoPagingEach(
+      async (product) => {
+        // Fetch prices for each product
         const prices = await stripe.prices.list({ product: product.id });
-        return {
+        productsWithPrices.push({
           ...product,
           prices: prices.data, // Attach prices to the product
-        };
-      })
+        });
+      }
     );
+
 
     return Response.json(productsWithPrices, { status: 200 });
   } catch (error) {
