@@ -154,7 +154,7 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   justify-items: center;
   flex-wrap: wrap;
   height: auto;
@@ -166,13 +166,20 @@ h1 {
 #productDisplay {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: baseline;
   align-items: center;
   justify-items: center;
   max-width: 400px;
+  max-height: 600px;
   width: auto;
   height: auto;
-  margin: 3em;
+  margin: 1em;
+  padding: 3em;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 2px;
+  border-color: white;
+  background-color: rgb(28, 28, 28);
   & > a {
     transition: all 0.3s;
     border-style: solid;
@@ -200,12 +207,65 @@ h1 {
 
 #productView {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   justify-items: center;
   margin: 3em;
   margin-bottom: 7em;
+  border-style: solid;
+  border-width: 2px;
+  border-color: white;
+  border-right-style: none;
+  border-left-style: none;
+  & > div {
+    margin: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: baseline;
+    justify-items: center;
+  }
+  & > p {
+    margin-bottom: 2em;
+  }
+  
+}
+
+button {
+    margin-top: 2em;
+    padding: 1em;
+    background-color: rgb(28, 28, 28);
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: white;
+    color: white;
+    font-size: 1.5em;
+    transition: all 0.3s;
+    &:hover {
+      cursor: pointer;
+      background-color: white;
+      color: rgb(28, 28, 28);
+      border-color: rgb(28, 28, 28);
+    }
+  }
+
+  @media (max-width: 768px) {
+    #productView {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      justify-items: center;
+      width: auto;
+    }
+    #productView > div {
+      margin: 0;
+      margin-bottom: 2em;
+    }
+    #productView > p {
+      margin: 0;
+    }
 }
 
 /* Invoice Page */

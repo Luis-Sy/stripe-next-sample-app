@@ -24,12 +24,16 @@ export default async function Page({ params }) {
   return (
     <>
     <div id="productView">
-      <Image src={product.images[0] } alt={product?.name} width={500} height={500} style={{objectFit: "cover", fill: true}}/>
-      <h1>{product?.name ?? "Unknown Product"}</h1>
-      <p>{product?.description ?? "No description available."}</p>
+      <div>
+        <Image src={product.images[0] } alt={product?.name} width={500} height={500} style={{objectFit: "cover", fill: true}}/>
+      </div>
+      <div>
+        <h1>{product?.name ?? "Unknown Product"}</h1>
+        <p>{product?.description ?? "No description available."}</p>
+        <h1>${product.prices[0].unit_amount / 100}</h1>
+        <AddToCartButton price={product.default_price} />
+      </div>
       
-      <p>Price: ${product.prices[0].unit_amount / 100}</p>
-      <AddToCartButton price={product.default_price} />
     </div>
   </>
 );
