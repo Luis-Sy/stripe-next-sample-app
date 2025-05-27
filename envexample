@@ -1,0 +1,10 @@
+# Rename this file .env to use these set variables
+
+# Set your stripe keys here, they can be found at https://dashboard.stripe.com/apikeys
+# NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test
+# STRIPE_SECRET_KEY=sk_test
+
+# Set this environment variable to support webhooks — https://stripe.com/docs/webhooks#verify-events
+# STRIPE_WEBHOOK_SECRET=whsec_12345
+
+SITE_URL=http://localhost:3000
