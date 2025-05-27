@@ -3,6 +3,19 @@ import { useEffect, useState } from "react";
 
 export default function InvoicePage() {
     
+    const currencies = [
+        { value: "usd", label: "US Dollar (USD)" },
+        { value: "eur", label: "Euro (EUR)" },
+        { value: "gbp", label: "British Pound (GBP)" },
+        { value: "jpy", label: "Japanese Yen (JPY)" },
+        { value: "aud", label: "Australian Dollar (AUD)" },
+        { value: "cad", label: "Canadian Dollar (CAD)" },
+        { value: "chf", label: "Swiss Franc (CHF)" },
+        { value: "cny", label: "Chinese Yuan (CNY)" },
+        { value: "inr", label: "Indian Rupee (INR)" },
+        { value: "brl", label: "Brazilian Real (BRL)" }
+    ];
+
     const [statusMessage, setStatusMessage] = useState("");
 
     async function sendInvoice(event) {
@@ -51,6 +64,12 @@ export default function InvoicePage() {
             <input type="text" name="customer_name" placeholder="Full Name" required />
             <input type="email" name="customer_email" placeholder="Email" required />
             <input type="number" name="amount" placeholder="0" min={0} required />
+            <select name="currency" required>
+                {currencies.map((currency) => (
+                <option key={currency.value} value={currency.value}>
+                    {currency.label}
+                </option>
+             ))}</select>
             <button type="submit">Send Invoice</button>
             </form>
             <h2>{statusMessage}</h2>
