@@ -27,6 +27,7 @@ export default function InvoicePage() {
         const customerName = formData.get("customer_name");
         const customerEmail = formData.get("customer_email");
         const amount = formData.get("amount");
+        const currency = formData.get("currency");
 
         try {
         const res = await fetch("/api/createInvoice", {
@@ -38,7 +39,9 @@ export default function InvoicePage() {
             "customerName": customerName,
             "customerEmail": customerEmail,
             "amount": parseFloat(amount), // Ensure amount is a number
+            "currency": currency,
             }),
+            
         });
 
         const data = await res.json();
@@ -63,7 +66,7 @@ export default function InvoicePage() {
             <form onSubmit={sendInvoice}>
             <input type="text" name="customer_name" placeholder="Full Name" required />
             <input type="email" name="customer_email" placeholder="Email" required />
-            <input type="number" name="amount" placeholder="0" min={0} required />
+            <input type="" name="amount" placeholder="0" min={0} step={0.1} required />
             <select name="currency" required>
                 {currencies.map((currency) => (
                 <option key={currency.value} value={currency.value}>

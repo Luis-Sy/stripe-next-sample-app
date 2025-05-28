@@ -169,8 +169,9 @@ h1 {
   justify-content: baseline;
   align-items: center;
   justify-items: center;
-  max-width: 400px;
-  max-height: 600px;
+  max-width: 45vw;
+  min-width: 35vw;
+  max-height: 60vh;
   width: auto;
   height: auto;
   margin: 1em;
@@ -196,6 +197,29 @@ h1 {
 #productName {
   margin-bottom: 1em;
   text-align: center;
+  font-size: 2vw;
+}
+
+#priceDisplay {
+  font-size: 2vw;
+}
+
+@media (max-width: 768px) {
+  #productName {
+    font-size: 3vw;
+  }
+
+  #productDisplay {
+    max-width: 70%;
+    max-height: 30%;
+  }
+
+  #productDisplayList {
+    flex-direction: row;
+    & > a {
+      height: 10px;
+    }
+  }
 }
 
 #priceDisplay {

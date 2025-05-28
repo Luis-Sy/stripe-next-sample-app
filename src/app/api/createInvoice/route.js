@@ -11,7 +11,9 @@ export async function POST(req) {
 
     const data = await req.json();
 
-    const currecny = data.currency || "cad"; // default to CAD if not provided
+    console.log(data);
+
+    const currency = data.currency || "cad"; // default to CAD if not provided
 
     const customer = await stripe.customers.create({
         name: data.customerName,
@@ -23,7 +25,7 @@ export async function POST(req) {
         auto_advance: false, // wait untill we manually finalize the invoice
         collection_method: "send_invoice",
         days_until_due: 7,
-        currency: currecny
+        currency: currency
     });
 
     await stripe.invoiceItems.create({
