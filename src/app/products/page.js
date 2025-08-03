@@ -41,7 +41,7 @@ export default function ProductsList() {
           {products.map((product) => (
               <div key={product.id} id="productDisplay">
                 <h2 id="productName">{product.name}</h2>
-                <div id="productImageContainer" style={{ position: "relative", width: "100%", height: "600px" }}>
+                <div id="productImageContainer" style={{ position: "relative", width: "50%", height: "800px" }}>
                     {product.images.length > 0 && ( 
                     /* The first image of the product will be displayed and act as a link to it's detailed view page */
                     <Link href={`/productView/${product.id}`}>
